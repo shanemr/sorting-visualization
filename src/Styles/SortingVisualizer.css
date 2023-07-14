@@ -1,0 +1,18 @@
+html, body{
+    min-height: 100vh;
+    min-width: 100vw;
+}
+
+.data-bar-container{
+    display: flex;
+    justify-content: center;
+    height: 1000px;
+  
+}
+
+.data-bar{
+    
+    max-width: 12px;
+    background-color: blue;
+    border: 1px solid black;
+}
