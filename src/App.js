@@ -6,7 +6,6 @@ import Header from './Components/Header'
 function App() {
   return (
     <div className="App" style={{height: '100vh'}}>
-      <Header></Header>
       <SortingVisualizer></SortingVisualizer>
     </div>
   );
