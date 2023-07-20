@@ -9,6 +9,7 @@ const SortingVisualizer = () =>{
    
      // Timer delay for each iteration of sorting
     const timer = ms => new Promise(res => setTimeout(res, ms));
+    // Data array
     const [sortArr, setSortArr] = useState([]);
     // Keeps track of currently selected data bars
     const[active, setActive] = useState(0);
@@ -16,8 +17,10 @@ const SortingVisualizer = () =>{
     const[speed, setSpeed] = useState(20);
     // Size of array
     const[arraySize, setArraySize] = useState(10);
-    //
+    // Modifies width of dta bars to fit array 
     const[barWidth, setBarWidth] = useState(.5);
+    // Keesp track of algoruthm selected
+    const[algo, setAlgo] = useState();
    
     // Randomize data points in array
     const resetSortArray = () =>{
@@ -36,6 +39,12 @@ const SortingVisualizer = () =>{
         
    }, [])
 
+   const updateAlgo = (e) =>{
+    e.preventDefault();
+    console.log("algo update")
+        setAlgo(e.target.value)
+        console.log(algo);
+   }
 
    const  bubbleSort  = async() =>{
         for(let i = 0; i < sortArr.length - 1; i++){
@@ -52,14 +61,28 @@ const SortingVisualizer = () =>{
                 
                 await timer(speed * 10);
             }
-
+            setActive(0);
         }
-        setActive(0);
+        
+    }
+
+
+    function runAlgorithm(){
+        console.log('run algo called');
+        switch (algo) {
+            case 'bubble-sort':
+             
+                bubbleSort();
+                break;
+        
+            default:
+                break;
+        }
     }
 
 
     const setColor = (index) =>{
-        return index === active ? 'green' : 'blue';
+        return index === active ? '#2272FF' : 'white';
     }
 
     
@@ -73,15 +96,8 @@ const SortingVisualizer = () =>{
 
 
     return(
-        <body className="main-container">
-            <Header updateSpeed={updateSpeed} 
-                    speed={speed} 
-                    resetSortArray={resetSortArray} 
-                    bubbleSort={bubbleSort}
-                    updateArraySize={updateArraySize}
-                    arraySize={arraySize}
-            ></Header>
-            <div className='data-bar-container'>
+        <div className="main-container">
+             <div className='data-bar-container'>
                 {sortArr.map((value, index) => {
                     return(
                         <div key={index} className='data-bar' style={{height: `${value}px`, backgroundColor: setColor(index), minWidth:`${barWidth}%`}}></div>
@@ -89,7 +105,18 @@ const SortingVisualizer = () =>{
                 
                 })}
             </div>
-        </body>
+            <Header updateSpeed={updateSpeed} 
+                    speed={speed} 
+                    resetSortArray={resetSortArray} 
+                    bubbleSort={bubbleSort}
+                    updateArraySize={updateArraySize}
+                    arraySize={arraySize}
+                    updateAlgo={updateAlgo}
+                    alog={algo}
+                    runAlgorithm={runAlgorithm}
+            ></Header>
+           
+        </div>
     )
 
 }

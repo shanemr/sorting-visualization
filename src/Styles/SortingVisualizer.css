@@ -1,25 +1,28 @@
 html, body{
     max-height: 100vh;
     min-width: 100vw;
-    font-size: 8px;
-    display: flex;
-    flex-direction: column;
-    gap: 100px;
     
+}
+
+.main-container{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    gap: 10%;
 }
 
 .data-bar-container{
     display: flex;
     justify-content: center;
     align-items: flex-end;
-    
-    height: 790px;
-    
+    height: 95vh;
+    width: 90%;
+    background-color:#323232;
+    margin-top: 1%;
 }
 
 .data-bar{
     min-width: .5%;
-    max-width: 20px;
-    background-color: blue;
-    border: 1px solid black;
+    border: .5px solid black;
+    border-bottom: none;
 }

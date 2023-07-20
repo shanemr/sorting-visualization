@@ -1,0 +1,14 @@
+.header-content{
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    margin-right: 50px;
+}
+
+#selection-container{
+    
+}
+
+#array-options-container{
+    
+}

@@ -1,20 +1,47 @@
 import React from "react";
 
 
-function Header({resetSortArray, bubbleSort, speed, updateSpeed, updateArraySize, arraySize}){
+import '../Styles/Header.css'
+import { Button, Input, Form, FormGroup, Label } from "reactstrap";
+
+function Header({resetSortArray, updateAlgo, algo, speed, updateSpeed, updateArraySize, arraySize, runAlgorithm}){
     return(
         <div className='header-container'>
             <div className='header-content'>
-            
-                <button onClick={e => resetSortArray(e)}>Generate Array</button>
-                <label htmlFor="array-size">Set Array Size</label>
-                <input id='array-size' type='number' min='10' max ='300' value={arraySize} onChange={updateArraySize}></input>
-                <label htmlFor="speed">Set Speed</label>
-                <input id='speed' type='number' value={speed} onChange={updateSpeed}></input>
-                <button onClick={num => bubbleSort(100)}>Bubble Sort</button>
-                <button onClick={num => bubbleSort(100)}>Insertion Sort</button>
-                <button onClick={num => bubbleSort(100)}>Quick Sort</button>
-                <button onClick={num => bubbleSort(100)}>Merge Sort</button>
+                <div id='selection-container'>
+                    <h2>Select Sorting Algorithm</h2>
+                    <Form>
+                        <FormGroup check>
+                            <Label>Bubble Sort</Label>
+                            <Input type='radio' id='bubble-sort' name='algo-type' value='bubble-sort' onChange={e => updateAlgo(e)}/>
+                        </FormGroup>
+                        <FormGroup check>
+                            <Label>Insertion Sort</Label>
+                            <Input type='radio' id='insertion-sort' name='algo-type'value='bubble-sort' onChange={e => updateAlgo(e)}/>
+                        </FormGroup>
+                        <FormGroup check>
+                            <Label>Quick Sort</Label>
+                            <Input type='radio' id='quick-sort' name='algo-type' value='bubble-sort' onChange={e => updateAlgo(e)}/>
+                        </FormGroup>
+                        <FormGroup check>
+                            <Label>Merge Sort</Label>
+                            <Input type='radio' id='merg-sort' name='algo-type' value='bubble-sort' onChange={e => updateAlgo(e)}/>
+                        </FormGroup>
+                    </Form>                    
+                </div>
+                <div>
+                <h1>{algo}</h1>
+                </div>
+                <div id="array-options-container">
+                    
+                    <Label htmlFor="array-size">Set Array Size</Label>
+                    <Input id='array-size' type='number' min='10' max ='300' value={arraySize} onChange={updateArraySize}></Input>
+                    <Label htmlFor="speed">Set Speed</Label>
+                    <Input id='speed' type='number' value={speed} onChange={updateSpeed}></Input>
+                    <Button onClick={e => resetSortArray(e)} style={{width:'100%', marginTop: '10%'}}>Generate New Array</Button>
+                    <br/>
+                    <Button color='danger' disabled={algo} onClick={runAlgorithm} style={{width:'100%', marginTop: '10%'}}>Run</Button>
+                </div>
             </div>
         </div>
     )
