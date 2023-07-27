@@ -16,13 +16,16 @@ html, body{
     justify-content: center;
     align-items: flex-end;
     height: 95vh;
-    width: 90%;
+    width: 100%;
     background-color:#323232;
     margin-top: 1%;
+    
+    
 }
 
 .data-bar{
-    min-width: .5%;
     border: .5px solid black;
     border-bottom: none;
+    padding: 0;
+    
 }
